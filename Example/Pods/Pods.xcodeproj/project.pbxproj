@@ -11,10 +11,10 @@
 		643B8194C62685A647BE7FE7B57B00C6 /* Pods-HBUIKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A55D62D7A0E4DA6802A82EC40E1435E3 /* Pods-HBUIKit_Example-dummy.m */; };
 		6CC6870F53E2B4728AA1D6F76C95578F /* Pods-HBUIKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F8C4B87CFCB723052F3B0226BF8F1013 /* Pods-HBUIKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F733FDDF1C13ACF1633C4BEDFF79BB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		73BDED46ADA01E98D4D3BFBC8369B484 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE25E72C72FC174C8AE4589383364E /* ReplaceMe.swift */; };
 		9C0DDF1C2371914BC9A4301CDD4BBDC8 /* HBUIKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4940C9203601122911E7CF8783D05FE5 /* HBUIKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4A6DEA60A0F85CF2A0CDF6D9C63927F /* HBUIKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2242F9430D0A9347849AFE0006FC6FEB /* HBUIKit-dummy.m */; };
 		E26FDA2391A7170FA28CAA5AFC389AA5 /* Pods-HBUIKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9C588ABC406D89AB1C3C85F5B5FB42 /* Pods-HBUIKit_Tests-dummy.m */; };
+		E2B1F3E02B20565A00021453 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B1F3DF2B20565A00021453 /* ReplaceMe.swift */; };
 		F0EAE3F976CAA0FC9DE31A0A30C7BCCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		F46B2ED8399FCD9EB71A48978F991B9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -52,7 +52,6 @@
 		67F9D7E3127D79E3904D52982332A167 /* HBUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HBUIKit.release.xcconfig; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		778A89DDB03C31B7FEDA9A4C95AF9C5C /* HBUIKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = HBUIKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		7CDE25E72C72FC174C8AE4589383364E /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = HBUIKit/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		8C6FD981C8EDF34F544E17B073DB5F6A /* HBUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HBUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		986DA01C8C4A3ACC17D3137DDC41DA4B /* Pods-HBUIKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HBUIKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -64,6 +63,7 @@
 		D292941DD8C830872F886B41366A64BD /* Pods-HBUIKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HBUIKit_Example-Info.plist"; sourceTree = "<group>"; };
 		D61F63B1DC4C3A07E6643788B8A8FF60 /* HBUIKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "HBUIKit-Info.plist"; sourceTree = "<group>"; };
 		E238309B2A0E98CD8CE1DEFC8DF37B3C /* Pods-HBUIKit_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HBUIKit_Tests-Info.plist"; sourceTree = "<group>"; };
+		E2B1F3DF2B20565A00021453 /* ReplaceMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = HBUIKit/ReplaceMe.swift; sourceTree = "<group>"; };
 		EA811ADF07D573A08F25E42E7466B980 /* Pods-HBUIKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HBUIKit_Example.modulemap"; sourceTree = "<group>"; };
 		EDA29C5E5848B26DBB23FD1BEAE90BD2 /* Pods-HBUIKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HBUIKit_Tests.modulemap"; sourceTree = "<group>"; };
 		F2355FA09886A7AC484B79D478AAC7B2 /* Pods-HBUIKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HBUIKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		208D852332626AE9C4C9D744FFB3F8D4 /* HBUIKit */ = {
 			isa = PBXGroup;
 			children = (
-				7CDE25E72C72FC174C8AE4589383364E /* ReplaceMe.swift */,
+				E2B1F3DF2B20565A00021453 /* ReplaceMe.swift */,
 				01A0D831DB4C1CBBC140C5F58DA49176 /* Pod */,
 				4DB13A831A90C4E4F0FB8D1383020F5D /* Support Files */,
 			);
@@ -317,6 +317,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					287AC7C849146D3150091A158F79DCB3 = {
+						LastSwiftMigration = 1500;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -383,8 +388,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2B1F3E02B20565A00021453 /* ReplaceMe.swift in Sources */,
 				D4A6DEA60A0F85CF2A0CDF6D9C63927F /* HBUIKit-dummy.m in Sources */,
-				73BDED46ADA01E98D4D3BFBC8369B484 /* ReplaceMe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +577,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 21F756F91F52C936640D33C449F969EE /* HBUIKit.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -592,6 +598,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -603,6 +610,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 67F9D7E3127D79E3904D52982332A167 /* HBUIKit.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

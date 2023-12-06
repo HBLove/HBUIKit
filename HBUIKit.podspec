@@ -31,7 +31,7 @@ TODO: Add long description of the pod here.
   s.frameworks = 'UIKit'
   s.ios.deployment_target = '13.0'
 
-  s.source_files = 'HBUIKit/Classes/**/*'
+  s.source_files = 'HBUIKit/**/*.swift'
   
   # s.resource_bundles = {
   #   'HBUIKit' => ['HBUIKit/Assets/*.png']
