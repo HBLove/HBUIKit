@@ -1,15 +1,14 @@
 //
-//  SwiftUIKitView.swift
-//  SwiftUIKit
+//  HBView.swift
+//  HB
 //
 //  Created by 黄波 on 2023/11/22.
 //
 
 import UIKit
-import Combine
-public protocol SwiftUIKitBase: UIView{}
+public protocol HBBase: UIView{}
 
-extension SwiftUIKitBase {
+extension HBBase {
     
     public func then(_ body: (Self) -> Void) -> Self {
         body(self)
@@ -24,7 +23,7 @@ extension SwiftUIKitBase {
         return view
     }
     
-    public func overlay<T: SwiftUIKitBase>(alignment: ViewLayout.Alignment = .center,  content: () -> T) -> View {
+    public func overlay<T: HBBase>(alignment: ViewLayout.Alignment = .center,  content: () -> T) -> View {
         let view = offset(0,0)
         let content = content()
         ViewLayout.frame(view: content, in: view, alignment: alignment, isContain: false)
@@ -98,25 +97,22 @@ extension SwiftUIKitBase {
 }
 
 // MARK: 事件
-extension SwiftUIKitBase {
-    public var eventMaganer: ViewEventMaganer? {
-        get {
-            if let result: ViewEventMaganer = getAssociated(function: #function) {
-                return result
-            }
-            let result = ViewEventMaganer()
-            self.eventMaganer = result
-            return result
-        }
-        set {
-            setAssociated(newValue: newValue, function: #function)
-        }
+extension HBBase {
+    var eventMaganer: ViewEventMaganer? {
+        get { getAssociated(function: #function) }
+        set { setAssociated(newValue: newValue, function: #function) }
     }
     
+    public func getEventMaganer() -> ViewEventMaganer {
+        if eventMaganer == nil {
+            eventMaganer = ViewEventMaganer()
+        }
+        return eventMaganer!
+    }
     // MARK: 手势
     @discardableResult
     public func onGesture<T: UIGestureRecognizer>(gesture: T, action: @escaping (T) -> Void) -> Self {
-        eventMaganer?.addGesture(gesture: gesture, onEventHandler: { sender in
+        getEventMaganer().addGesture(gesture: gesture, onEventHandler: { sender in
             guard let sender = sender as? T else { return }
             action(sender)
         })

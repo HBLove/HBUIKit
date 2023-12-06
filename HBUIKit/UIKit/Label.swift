@@ -1,25 +1,26 @@
 //
 //  Label.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/2.
 //
 import UIKit
 import Combine
-public class Label: UILabel, SwiftUIKitView {
+public class Label: UILabel, HBView {
+    var store: Set<AnyCancellable>?
     
     public convenience init(text: String) {
         self.init()
         self.text = text
     }
     
-    public func text(_ publisher: Published<String?>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.receive(on: RunLoop.main).assign(to: \.text, on: self).store(in: &store)
+    public func text(_ publisher: Published<String?>.Publisher) -> Self {
+        publisher.receive(on: RunLoop.main).assign(to: \.text, on: self).storeTo(self)
         return self
     }
     
-    public func attributedText(_ publisher: Published<NSAttributedString?>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.receive(on: RunLoop.main).assign(to: \.attributedText, on: self).store(in: &store)
+    public func attributedText(_ publisher: Published<NSAttributedString?>.Publisher) -> Self {
+        publisher.receive(on: RunLoop.main).assign(to: \.attributedText, on: self).storeTo(self)
         return self
     }
     

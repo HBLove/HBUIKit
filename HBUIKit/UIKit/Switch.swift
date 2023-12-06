@@ -1,13 +1,14 @@
 //
 //  Switch.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
 import Combine
-open class Switch: UISwitch, SwiftUIKitControl {
+open class Switch: UISwitch, HBControl {
+    var store: Set<AnyCancellable>?
     
     public func resizable() -> Self {
         let size = getMinSize()
@@ -26,12 +27,12 @@ open class Switch: UISwitch, SwiftUIKitControl {
         return self
     }
     
-    public func isOn(_ publisher: Published<Bool>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.receive(on: RunLoop.main).assign(to: \.isOn, on: self).store(in: &store)
+    public func isOn(_ publisher: Published<Bool>.Publisher) -> Self {
+        publisher.receive(on: RunLoop.main).assign(to: \.isOn, on: self).storeTo(self)
         return self
     }
-    public func isOn<Root>(to keyPath: ReferenceWritableKeyPath<Root, Bool>, on object: Root, store: inout Set<AnyCancellable>) -> Self{
-        publisher(events: .valueChanged).map { $0.isOn }.receive(on: RunLoop.main).assign(to: keyPath, on: object).store(in: &store)
+    public func isOn<Root>(to keyPath: ReferenceWritableKeyPath<Root, Bool>, on object: Root) -> Self{
+        publisher(events: .valueChanged).map { $0.isOn }.receive(on: RunLoop.main).assign(to: keyPath, on: object).storeTo(self)
         return self
     }
     

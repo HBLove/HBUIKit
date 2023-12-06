@@ -1,13 +1,15 @@
 //
 //  StackView.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
-
-open class HStack: UIStackView, SwiftUIKitView {
+import Combine
+open class HStack: UIStackView, HBView {
+    var store: Set<AnyCancellable>?
+    
     public convenience init(distribution: UIStackView.Distribution = .fill, alignment: UIStackView.Alignment = .fill, spacing: CGFloat = 0, @ViewClosure views: () -> [UIView]) {
         let views = views()
         self.init(arrangedSubviews: views)
@@ -25,7 +27,8 @@ open class HStack: UIStackView, SwiftUIKitView {
     }
 }
 
-open class VStack: UIStackView, SwiftUIKitView {
+open class VStack: UIStackView, HBView {
+    var store: Set<AnyCancellable>?
     public convenience init(distribution: UIStackView.Distribution = .fill, alignment: UIStackView.Alignment = .fill, spacing: CGFloat = 0, @ViewClosure views: () -> [UIView]) {
         let views = views()
         self.init(arrangedSubviews: views)
@@ -43,7 +46,9 @@ open class VStack: UIStackView, SwiftUIKitView {
     }
 }
 
-open class ZStack: UIView, SwiftUIKitView {
+open class ZStack: UIView, HBView {
+    var store: Set<AnyCancellable>?
+    
     public let alignment: ViewLayout.Alignment
     
     public init(alignment: ViewLayout.Alignment = .center, @ViewClosure views: () -> [UIView]) {

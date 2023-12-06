@@ -381,8 +381,10 @@
 		E2C0A7B52B206FB9002C8CC2 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				E2C0A7B62B206FB9002C8CC2 /* Label.swift */,
+				E2C0A7CA2B206FB9002C8CC2 /* Object.swift */,
+				E2C0A7C32B206FB9002C8CC2 /* Base.swift */,
 				E2C0A7B72B206FB9002C8CC2 /* View.swift */,
+				E2C0A7B62B206FB9002C8CC2 /* Label.swift */,
 				E2C0A7B82B206FB9002C8CC2 /* Control.swift */,
 				E2C0A7B92B206FB9002C8CC2 /* TextViewStyle.swift */,
 				E2C0A7BA2B206FB9002C8CC2 /* CollectionView.swift */,
@@ -394,14 +396,12 @@
 				E2C0A7C02B206FB9002C8CC2 /* TableView.swift */,
 				E2C0A7C12B206FB9002C8CC2 /* Switch.swift */,
 				E2C0A7C22B206FB9002C8CC2 /* TextField.swift */,
-				E2C0A7C32B206FB9002C8CC2 /* Base.swift */,
 				E2C0A7C42B206FB9002C8CC2 /* TextView.swift */,
 				E2C0A7C52B206FB9002C8CC2 /* Slider.swift */,
 				E2C0A7C62B206FB9002C8CC2 /* TextFieldStyle.swift */,
 				E2C0A7C72B206FB9002C8CC2 /* Stepper.swift */,
 				E2C0A7C82B206FB9002C8CC2 /* ImageView.swift */,
 				E2C0A7C92B206FB9002C8CC2 /* ActivityIndicatorView.swift */,
-				E2C0A7CA2B206FB9002C8CC2 /* Object.swift */,
 				E2C0A7CB2B206FB9002C8CC2 /* Button.swift */,
 			);
 			name = UIKit;

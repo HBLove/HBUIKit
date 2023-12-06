@@ -1,52 +1,54 @@
 //
 //  Button.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
 import Combine
-open class Button: UIButton, SwiftUIKitControl {
-    public func title(_ publisher: Published<String?>.Publisher, for state: UIControl.State, store: inout Set<AnyCancellable>) -> Self {
+open class Button: UIButton, HBControl {
+    var store: Set<AnyCancellable>?
+    
+    public func title(_ publisher: Published<String?>.Publisher, for state: UIControl.State) -> Self {
         publisher.receive(on: RunLoop.main).sink {[weak self] title in
             self?.setTitle(title, for: state)
-        }.store(in: &store)
+        }.storeTo(self)
         return self
     }
     
-    public func titleColor(_ publisher: Published<UIColor?>.Publisher, for state: UIControl.State, store: inout Set<AnyCancellable>) -> Self {
+    public func titleColor(_ publisher: Published<UIColor?>.Publisher, for state: UIControl.State) -> Self {
         publisher.receive(on: RunLoop.main).sink { [weak self] color in
             self?.setTitleColor(color, for: state)
-        }.store(in: &store)
+        }.storeTo(self)
         return self
     }
     
-    public func titleShadowColor(_ publisher: Published<UIColor?>.Publisher, for state: UIControl.State, store: inout Set<AnyCancellable>) -> Self {
+    public func titleShadowColor(_ publisher: Published<UIColor?>.Publisher, for state: UIControl.State) -> Self {
         publisher.receive(on: RunLoop.main).sink { [weak self] color in
             self?.setTitleShadowColor(color, for: state)
-        }.store(in: &store)
+        }.storeTo(self)
         return self
     }
     
-    public func image(_ publisher: Published<UIImage?>.Publisher, for state: UIControl.State, store: inout Set<AnyCancellable>) -> Self {
+    public func image(_ publisher: Published<UIImage?>.Publisher, for state: UIControl.State) -> Self {
         publisher.receive(on: RunLoop.main).sink { [weak self] image in
             self?.setImage(image, for: state)
-        }.store(in: &store)
+        }.storeTo(self)
         return self
     }
     
-    public func backgroundImage(_ publisher: Published<UIImage?>.Publisher, for state: UIControl.State, store: inout Set<AnyCancellable>) -> Self {
+    public func backgroundImage(_ publisher: Published<UIImage?>.Publisher, for state: UIControl.State) -> Self {
         publisher.receive(on: RunLoop.main).sink { [weak self] image in
             self?.setBackgroundImage(image, for: state)
-        }.store(in: &store)
+        }.storeTo(self)
         return self
     }
     
-    public func attributedTitle(_ publisher: Published<NSAttributedString?>.Publisher, for state: UIControl.State, store: inout Set<AnyCancellable>) -> Self {
+    public func attributedTitle(_ publisher: Published<NSAttributedString?>.Publisher, for state: UIControl.State) -> Self {
         publisher.receive(on: RunLoop.main).sink { [weak self] att in
             self?.setAttributedTitle(att, for: state)
-        }.store(in: &store)
+        }.storeTo(self)
         return self
     }
 }

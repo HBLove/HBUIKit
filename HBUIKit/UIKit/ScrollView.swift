@@ -1,18 +1,19 @@
 //
 //  ScrollView.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
-protocol SwiftUIKitScrollView: UIScrollView, SwiftUIKitView {}
+import Combine
+protocol HBScrollView: UIScrollView, HBView {}
 
-open class ScrollView: UIScrollView, SwiftUIKitScrollView {
-  
+open class ScrollView: UIScrollView, HBScrollView {
+    var store: Set<AnyCancellable>?
 }
 
-extension SwiftUIKitScrollView {
+extension HBScrollView {
     public func contentOffset(_ contentOffset: CGPoint) -> Self {
         self.contentOffset = contentOffset
         return self

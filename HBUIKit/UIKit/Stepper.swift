@@ -1,13 +1,15 @@
 //
 //  Stepper.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
 import Combine
-open class Stepper: UIStepper, SwiftUIKitControl {
+open class Stepper: UIStepper, HBControl {
+    var store: Set<AnyCancellable>?
+    
     public func isContinuous(_ isContinuous: Bool) -> Self {
         self.isContinuous = isContinuous
         return self
@@ -25,13 +27,13 @@ open class Stepper: UIStepper, SwiftUIKitControl {
         return self
     }
     
-    public func value(_ publiser: Published<Double>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publiser.assign(to: \.value, on: self).store(in: &store)
+    public func value(_ publiser: Published<Double>.Publisher) -> Self {
+        publiser.assign(to: \.value, on: self).storeTo(self)
         return self
     }
     
-    public func value<Root>(to keyPath: ReferenceWritableKeyPath<Root, Double>, on object: Root, store: inout Set<AnyCancellable>) -> Self {
-        publisher(events: .valueChanged).map{$0.value}.assign(to: keyPath, on: object).store(in: &store)
+    public func value<Root>(to keyPath: ReferenceWritableKeyPath<Root, Double>, on object: Root) -> Self {
+        publisher(events: .valueChanged).map{$0.value}.assign(to: keyPath, on: object).storeTo(self)
         return self
     }
     

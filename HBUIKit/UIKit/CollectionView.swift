@@ -1,12 +1,15 @@
 //
 //  CollectionView.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
-open class CollectionView: UICollectionView, SwiftUIKitScrollView {
+import Combine
+open class CollectionView: UICollectionView, HBScrollView {
+    var store: Set<AnyCancellable>?
+    
     // MARK: - Cell register and reuse
     public func registerCellNib<T: UICollectionViewCell>(_ type: T.Type) -> Self {
         registerCellWithNib(type)

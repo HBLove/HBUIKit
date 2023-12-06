@@ -1,30 +1,32 @@
 //
 //  Control.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
 import Combine
-protocol SwiftUIKitControl: UIControl, SwiftUIKitView {}
+protocol HBControl: UIControl, HBView {}
 
-open class Control: UIControl, SwiftUIKitControl {}
+open class Control: UIControl {
+    var store: Set<AnyCancellable>?
+}
 
 // MARK: combine
-extension SwiftUIKitControl {
-    public func isEnabled(_ publisher: Published<Bool>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.receive(on: RunLoop.main).assign(to: \.isEnabled, on: self).store(in: &store)
+extension HBControl {
+    public func isEnabled(_ publisher: Published<Bool>.Publisher) -> Self {
+        publisher.receive(on: RunLoop.main).assign(to: \.isEnabled, on: self).storeTo(self)
         return self
     }
     
-    public func isHighlighted(_ publisher: Published<Bool>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.receive(on: RunLoop.main).assign(to: \.isHighlighted, on: self).store(in: &store)
+    public func isHighlighted(_ publisher: Published<Bool>.Publisher) -> Self {
+        publisher.receive(on: RunLoop.main).assign(to: \.isHighlighted, on: self).storeTo(self)
         return self
     }
     
-    public func isSelected(_ publisher: Published<Bool>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.receive(on: RunLoop.main).assign(to: \.isSelected, on: self).store(in: &store)
+    public func isSelected(_ publisher: Published<Bool>.Publisher) -> Self {
+        publisher.receive(on: RunLoop.main).assign(to: \.isSelected, on: self).storeTo(self)
         return self
     }
     
@@ -34,7 +36,7 @@ extension SwiftUIKitControl {
     
 }
 
-extension SwiftUIKitControl {
+extension HBControl {
     public func isEnabled(_ isEnabled: Bool) -> Self {
         self.isEnabled = isEnabled
         return self
@@ -64,7 +66,7 @@ extension SwiftUIKitControl {
     
     @discardableResult
     public func onPress(for event: UIControl.Event, action: @escaping (Self) -> Void) -> Self {
-        eventMaganer?.addAction(control: self, event: event, onEventHandler: { sender in
+        getEventMaganer().addAction(control: self, event: event, onEventHandler: { sender in
             guard let control = sender as? Self else { return }
             action(control)
         })

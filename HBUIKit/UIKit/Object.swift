@@ -1,12 +1,11 @@
 //
-//  SwiftUIKitBase.swift
-//  SwiftUIKit
+//  HBBase.swift
+//  HB
 //
 //  Created by 黄波 on 2023/11/22.
 //
 
 import UIKit
-import Combine
 @resultBuilder
 public struct ViewClosure {
     public typealias Expression = UIView

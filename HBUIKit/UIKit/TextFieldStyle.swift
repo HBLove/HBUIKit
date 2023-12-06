@@ -1,6 +1,6 @@
 //
 //  TextFieldStyle.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/12/4.
 //
@@ -31,7 +31,7 @@ public class TextFieldStyle: TextField {
         case .phone:
             keyboardType = .numberPad
         case .length(let max):
-            eventMaganer?.addAction(control: self, event: .editingChanged, onEventHandler: {[weak self] _ in
+            getEventMaganer().addAction(control: self, event: .editingChanged, onEventHandler: {[weak self] _ in
                 self?.textdidChange(max: max)
             })
         }

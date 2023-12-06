@@ -1,13 +1,14 @@
 //
 //  TableView.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
-
-open class TableView: UITableView, SwiftUIKitScrollView {
+import Combine
+open class TableView: UITableView, HBScrollView {
+    var store: Set<AnyCancellable>?
     public func register(_ nib: UINib?, forCellIdentifier identifier: String) -> Self {
         self.register(nib, forCellReuseIdentifier: identifier)
         return self

@@ -1,13 +1,15 @@
 //
 //  ActivityIndicatorView.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
 import Combine
-open class ActivityIndicatorView: UIActivityIndicatorView, SwiftUIKitView {
+open class ActivityIndicatorView: UIActivityIndicatorView, HBView {
+    var store: Set<AnyCancellable>?
+    
     public func style(_ style: UIActivityIndicatorView.Style) -> Self {
         self.style = style
         return self
@@ -32,10 +34,10 @@ open class ActivityIndicatorView: UIActivityIndicatorView, SwiftUIKitView {
         return self
     }
     
-    public func animating(_ publuser: Published<Bool>.Publisher, store: inout Set<AnyCancellable>) -> Self {
+    public func animating(_ publuser: Published<Bool>.Publisher) -> Self {
         publuser.sink {[weak self] isAnimating in
             self?.animating(isAnimating)
-        }.store(in: &store)
+        }.storeTo(self)
         return self
     }
 }

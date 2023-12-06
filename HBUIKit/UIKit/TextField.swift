@@ -1,6 +1,6 @@
 //
 //  TextField.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
@@ -8,24 +8,26 @@
 import UIKit
 import Combine
 // _clearButton
-public class TextField: UITextField, SwiftUIKitControl {
+public class TextField: UITextField, HBControl {
+    var store: Set<AnyCancellable>?
+    
     public convenience init(_ text: String) {
         self.init()
         self.text = text
     }
     
-    public func text<Root>(to keyPath: ReferenceWritableKeyPath<Root, String?>, on object: Root, store: inout Set<AnyCancellable>) -> Self{
-        publisher.assign(to: keyPath, on: object).store(in: &store)
+    public func text<Root>(to keyPath: ReferenceWritableKeyPath<Root, String?>, on object: Root) -> Self{
+        publisher.assign(to: keyPath, on: object).storeTo(self)
         return self
     }
     
-    public func text(_ publisher: Published<String?>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.receive(on: RunLoop.main).assign(to: \.text, on: self).store(in: &store)
+    public func text(_ publisher: Published<String?>.Publisher) -> Self {
+        publisher.receive(on: RunLoop.main).assign(to: \.text, on: self).storeTo(self)
         return self
     }
     
-    public func attributedText(_ publisher: Published<NSAttributedString?>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.receive(on: RunLoop.main).assign(to: \.attributedText, on: self).store(in: &store)
+    public func attributedText(_ publisher: Published<NSAttributedString?>.Publisher) -> Self {
+        publisher.receive(on: RunLoop.main).assign(to: \.attributedText, on: self).storeTo(self)
         return self
     }
     

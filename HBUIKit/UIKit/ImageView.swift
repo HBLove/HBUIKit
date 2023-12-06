@@ -1,26 +1,28 @@
 //
 //  ImageView.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
 import Combine
-open class ImageView: UIImageView, SwiftUIKitView {
+open class ImageView: UIImageView, HBView {
+    var store: Set<AnyCancellable>?
     
-    public func image(_ publisher: Published<UIImage?>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.receive(on: RunLoop.main).assign(to: \.image, on: self).store(in: &store)
+    
+    public func image(_ publisher: Published<UIImage?>.Publisher) -> Self {
+        publisher.receive(on: RunLoop.main).assign(to: \.image, on: self).storeTo(self)
         return self
     }
     
-    public func highlightedImage(_ publisher: Published<UIImage?>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.receive(on: RunLoop.main).assign(to: \.highlightedImage, on: self).store(in: &store)
+    public func highlightedImage(_ publisher: Published<UIImage?>.Publisher) -> Self {
+        publisher.receive(on: RunLoop.main).assign(to: \.highlightedImage, on: self).storeTo(self)
         return self
     }
     
-    public func isHighlighted(_ publisher: Published<Bool>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.receive(on: RunLoop.main).assign(to: \.isHighlighted, on: self).store(in: &store)
+    public func isHighlighted(_ publisher: Published<Bool>.Publisher) -> Self {
+        publisher.receive(on: RunLoop.main).assign(to: \.isHighlighted, on: self).storeTo(self)
         return self
     }
     

@@ -1,13 +1,13 @@
 //
 //  Spacer.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
 
-open class Spacer: View {
+open class Spacer: UIView {
     public let spacing: CGFloat
     public var axis: NSLayoutConstraint.Axis? {
         didSet {
@@ -33,7 +33,7 @@ open class Spacer: View {
     }
 }
 
-open class Divider: UIView, SwiftUIKitView {
+open class Divider: UIView {
     private var weight: CGFloat?
     private var height: CGFloat?
     public var axis: NSLayoutConstraint.Axis? {

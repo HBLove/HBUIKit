@@ -1,13 +1,15 @@
 //
 //  PageControl.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
 import Combine
-open class PageControl: UIPageControl, SwiftUIKitControl {
+open class PageControl: UIPageControl, HBControl {
+    var store: Set<AnyCancellable>?
+    
     public func numberOfPages(_ numberOfPages: Int) -> Self {
         self.numberOfPages = numberOfPages
         return self
@@ -17,13 +19,13 @@ open class PageControl: UIPageControl, SwiftUIKitControl {
         return self
     }
     
-    public func currentPage(_ publisher: Published<Int>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.assign(to: \.currentPage, on: self).store(in: &store)
+    public func currentPage(_ publisher: Published<Int>.Publisher) -> Self {
+        publisher.assign(to: \.currentPage, on: self).storeTo(self)
         return self
     }
     
-    public func currentPage<Root>(to keyPath: ReferenceWritableKeyPath<Root, Int>, on object: Root, store: inout Set<AnyCancellable>) -> Self {
-        publisher(events: .valueChanged).map { $0.currentPage }.assign(to: keyPath, on: object).store(in: &store)
+    public func currentPage<Root>(to keyPath: ReferenceWritableKeyPath<Root, Int>, on object: Root) -> Self {
+        publisher(events: .valueChanged).map { $0.currentPage }.assign(to: keyPath, on: object).storeTo(self)
         return self
     }
     
@@ -45,12 +47,14 @@ open class PageControl: UIPageControl, SwiftUIKitControl {
         }
         return self
     }
+    
     public func allowsContinuousInteraction(_ allowsContinuousInteraction: Bool) -> Self {
         if #available(iOS 14.0, *) {
             self.allowsContinuousInteraction = allowsContinuousInteraction
         }
         return self
     }
+    
     public func preferredIndicatorImage(_ preferredIndicatorImage: UIImage?) -> Self {
         if #available(iOS 14.0, *) {
             self.preferredIndicatorImage = preferredIndicatorImage

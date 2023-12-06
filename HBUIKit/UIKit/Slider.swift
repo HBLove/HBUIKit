@@ -1,24 +1,26 @@
 //
 //  Slider.swift
-//  SwiftUIKit
+//  HB
 //
 //  Created by 黄波 on 2023/11/3.
 //
 
 import UIKit
 import Combine
-open class Slider: UISlider, SwiftUIKitControl {
+open class Slider: UISlider, HBControl {
+    var store: Set<AnyCancellable>?
+    
     public func value(_ value: Float) -> Self {
         self.value = value
         return self
     }
     
-    public func value(_ publisher: Published<Float>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.assign(to: \.value, on: self).store(in: &store)
+    public func value(_ publisher: Published<Float>.Publisher) -> Self {
+        publisher.assign(to: \.value, on: self).storeTo(self)
         return self
     }
-    public func value<Root>(to keyPath: ReferenceWritableKeyPath<Root, Float>, on object: Root, store: inout Set<AnyCancellable>) -> Self{
-        publisher(events: .valueChanged).map { $0.value }.assign(to: keyPath, on: object).store(in: &store)
+    public func value<Root>(to keyPath: ReferenceWritableKeyPath<Root, Float>, on object: Root) -> Self{
+        publisher(events: .valueChanged).map { $0.value }.assign(to: keyPath, on: object).storeTo(self)
         return self
     }
     

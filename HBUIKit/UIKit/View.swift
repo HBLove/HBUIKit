@@ -1,44 +1,57 @@
 //
-//  SwiftUIKit.swift
-//  SwiftUIKit
+//  HB.swift
+//  HB
 //
 //  Created by 黄波 on 2023/11/2.
 //
-import UIKit 
+import UIKit
 import Combine
-public protocol SwiftUIKitView: SwiftUIKitBase {}
+protocol HBView: HBBase {
+    var store: Set<AnyCancellable>? {get set}
+}
 
-open class View: UIView, SwiftUIKitView {
+open class View: UIView, HBView {
+    var store: Set<AnyCancellable>?
     var minSize = CGSize.zero
 }
 
-extension SwiftUIKitView {
-    public func isUserInteractionEnabled(_ publisher: Published<Bool>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publisher.receive(on: RunLoop.main).assign(to: \.isUserInteractionEnabled, on: self).store(in: &store)
+extension AnyCancellable {
+    func storeTo(_ view: HBView) {
+        if view.store == nil {
+            view.store = []
+        }
+        store(in: &view.store!)
+    }
+}
+
+extension HBView {
+    public func isUserInteractionEnabled(_ publisher: Published<Bool>.Publisher) -> Self {
+        publisher.receive(on: RunLoop.main).assign(to: \.isUserInteractionEnabled, on: self).storeTo(self)
         return self
     }
-    public func backgroundColor(_ publusher: Published<UIColor?>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publusher.assign(to: \.backgroundColor, on: self).store(in: &store)
+    public func backgroundColor(_ publusher: Published<UIColor?>.Publisher) -> Self {
+        publusher.assign(to: \.backgroundColor, on: self).storeTo(self)
         return self
     }
     
-    public func isHidden(_ publusher: Published<Bool>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publusher.assign(to: \.isHidden, on: self).store(in: &store)
+    public func isHidden(_ publusher: Published<Bool>.Publisher) -> Self {
+        publusher.assign(to: \.isHidden, on: self).storeTo(self)
         return self
     }
     
-    public func alpha(_ publusher: Published<CGFloat>.Publisher, store: inout Set<AnyCancellable>) -> Self {
-        publusher.assign(to: \.alpha, on: self).store(in: &store)
+    public func alpha(_ publusher: Published<CGFloat>.Publisher) -> Self {
+        publusher.assign(to: \.alpha, on: self).storeTo(self)
         return self
     }
     
-    public func assign<T>(_ publusher: Published<T>.Publisher, to keyPath: ReferenceWritableKeyPath<Self, T>, store: inout Set<AnyCancellable>) -> Self {
-        publusher.assign(to: keyPath, on: self).store(in: &store)
+    public func assign<T>(_ publusher: Published<T>.Publisher, to keyPath: ReferenceWritableKeyPath<Self, T>) -> Self {
+        publusher.assign(to: keyPath, on: self).storeTo(self)
         return self
     }
 }
 
-extension SwiftUIKitView {
+
+extension HBView {
     public func isUserInteractionEnabled(_ isUserInteractionEnabled: Bool) -> Self {
         self.isUserInteractionEnabled = isUserInteractionEnabled
         return self
@@ -160,7 +173,7 @@ extension SwiftUIKitView {
 }
 
 // MARK: layer
-extension SwiftUIKitView {
+extension HBView {
     public func cornerRadius(_ cornerRadius: CGFloat, maskedCorners: CACornerMask? = nil, masksToBounds: Bool? = nil) -> Self {
         layer.cornerRadius = cornerRadius
         if let maskedCorners {
