@@ -1,0 +1,6 @@
+framework module HBUIKit {
+  umbrella header "HBUIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

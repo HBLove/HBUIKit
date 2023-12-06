@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'HBUIKit'
-  s.version          = '0.1.0'
+  s.version          = '0.0.1'
   s.summary          = 'A short description of HBUIKit.'
 
 # This description is used to generate tags and improve search results.
@@ -21,14 +21,15 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/hblove/HBUIKit'
+  s.homepage         = 'https://github.com/HBLove'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'hblove' => '376894729@qq.com' }
-  s.source           = { :git => 'https://github.com/hblove/HBUIKit.git', :tag => s.version.to_s }
+  s.author           = { 'HBLove' => '376894729@qq.com' }
+  s.source           = { :git => 'https://github.com/HBLove/HBUIKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '10.0'
+  s.swift_version = '5.0'
+  s.frameworks = 'UIKit'
+  s.ios.deployment_target = '13.0'
 
   s.source_files = 'HBUIKit/Classes/**/*'
   
