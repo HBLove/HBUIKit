@@ -7,12 +7,16 @@
 //
 
 import UIKit
-
+import HBUIKit
 class ViewController: UIViewController {
-
+    @UserDefault(key: "d")
+    var dd: Bool?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+//        HBApp.
+//        Verification.Rule.bool("1").valid
+        
     }
 
     override func didReceiveMemoryWarning() {
