@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'HBUIKit_Example' do
+  pod 'HBUIKit', :path => '../'
+
+  target 'HBUIKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
